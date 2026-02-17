@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Someone Special ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-br from-pink-200 via-rose-200 to-red-300 min-h-screen flex items-center justify-center overflow-hidden">
+
+    <!-- FIRST SCREEN -->
+    <div id="firstScreen"
+        class="text-center p-8 bg-white/30 backdrop-blur-lg rounded-3xl shadow-2xl max-w-lg w-full relative">
+
+        <h1 class="text-4xl md:text-5xl font-bold text-red-600 mb-6 float">
+            Hey Shinyy... ❤️
+        </h1>
+
+        <p class="text-lg text-gray-800 mb-8">
+            I wrote something special just for you…
+            And now I need an answer.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-pink-700 mb-8">
+            Will you be my Wife? 💘
+        </h2>
+
+        <!-- FLEX BUTTONS DEFAULT -->
+        <div id="btnContainer" class="flex justify-center gap-6 relative">
+
+            <button onclick="sayYes()"
+                class="px-8 py-3 bg-red-500 hover:bg-red-600 text-white rounded-full text-lg font-semibold transition transform hover:scale-110 shadow-lg">
+                YES ❤️
+            </button>
+
+            <button id="noBtn"
+                class="px-8 py-3 bg-gray-500 text-white rounded-full text-lg font-semibold transition shadow-lg">
+                No 🥺
+            </button>
+        </div>
+    </div>
+
+    <!-- SECOND SCREEN -->
+    <div id="secondScreen"
+        class="hidden text-center p-10 bg-white/30 backdrop-blur-lg rounded-3xl shadow-2xl max-w-lg w-full animate-fadeIn">
+
+        <h1 class="text-4xl md:text-5xl font-bold text-red-600 mb-6">
+            Shiny… You Said YES 😭❤️
+        </h1>
+
+        <p class="text-lg text-gray-800 mb-6 leading-relaxed">
+            From the moment I met you,
+            my world got a little brighter. ✨
+        </p>
+
+        <p class="text-lg text-gray-800 mb-6 leading-relaxed">
+            You are my favorite notification,
+            my safest place,
+            and the best thing that ever happened to my heart. 💘
+        </p>
+
+        <p class="text-xl font-semibold text-pink-700 leading-relaxed">
+            This wasn’t just code, Shiny.
+            It was courage.
+            It was love.
+            It was me choosing you — every single time. ❤️
+        </p>
+
+        <p class="mt-8 text-2xl font-bold text-red-500">
+            I love you. Always. 💞
+        </p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const container = document.getElementById("btnContainer");
+
+        function moveButton() {
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            const maxX = containerRect.width - btnRect.width;
+            const maxY = 80;
+
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+
+            noBtn.style.position = "absolute";
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+
+        // Move when hovering
+        noBtn.addEventListener("mouseenter", moveButton);
+
+        // Move when trying to click fast
+        noBtn.addEventListener("mousedown", function (e) {
+            e.preventDefault();
+            moveButton();
+        });
+
+        function sayYes() {
+            document.getElementById("firstScreen").classList.add("hidden");
+            document.getElementById("secondScreen").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+
+</html>
